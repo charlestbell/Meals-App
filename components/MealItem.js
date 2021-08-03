@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 
 const MealItem = (props) => {
   return (
@@ -7,12 +13,21 @@ const MealItem = (props) => {
       <TouchableOpacity onPress={props.onSelectMeal}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
-            <Text>{props.title}</Text>
+            <ImageBackground
+              source={{ uri: props.image }}
+              style={styles.bgImage}
+            >
+              <View style={styles.titleContainer}>
+                <Text style={styles.title} numberOfLines={1}>
+                  {props.title}
+                </Text>
+              </View>
+            </ImageBackground>
           </View>
           <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
             <Text>{props.duration}m</Text>
-            <Text>{props.complexity}</Text>
-            <Text>{props.affordability}</Text>
+            <Text>{props.complexity.toUpperCase()}</Text>
+            <Text>{props.affordability.toUpperCase()}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -21,20 +36,38 @@ const MealItem = (props) => {
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 20,
+    color: "white",
+    backgroundColor: "rgba(0,0,0,0.6)",
+    paddingVertical: 5,
+    paddingHorizontal: 12,
+    textAlign: "center",
+  },
+  bgImage: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end",
+  },
   mealItem: {
     height: 200,
     width: "100%",
-    backgroundColor: "#ccc",
+    backgroundColor: "#d4d4d4",
+    borderRadius: 10,
+    overflow: "hidden",
   },
   mealRow: {
     flexDirection: "row",
   },
   mealHeader: {
-    height: "90%",
+    height: "85%",
   },
   mealDetail: {
     paddingHorizontal: 10,
     justifyContent: "space-between",
+    alignItems: "center",
+    height: "15%",
   },
 });
 
