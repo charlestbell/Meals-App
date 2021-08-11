@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
-} from "react-native";
+} from 'react-native';
 
 const MealItem = (props) => {
   return (
@@ -37,38 +37,38 @@ const MealItem = (props) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: "open-sans-bold",
+    fontFamily: 'open-sans-bold',
     fontSize: 20,
-    color: "white",
-    backgroundColor: "rgba(0,0,0,0.6)",
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     paddingVertical: 5,
     paddingHorizontal: 12,
-    textAlign: "center",
+    textAlign: 'center',
   },
   bgImage: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "flex-end",
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
   },
   mealItem: {
     height: 200,
-    width: "100%",
-    backgroundColor: "#d4d4d4",
+    width: '100%',
+    backgroundColor: '#d4d4d4',
     borderRadius: 10,
-    overflow: "hidden",
+    overflow: 'hidden',
     marginVertical: 10,
   },
   mealRow: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   mealHeader: {
-    height: "85%",
+    height: '85%',
   },
   mealDetail: {
     paddingHorizontal: 10,
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "15%",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '15%',
   },
 });
 
