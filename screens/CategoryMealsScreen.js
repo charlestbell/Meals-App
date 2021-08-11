@@ -4,8 +4,6 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 import MealItem from '../components/MealItem';
 
-import { CATEGORIES } from '../data/dummy-data';
-
 const CategoryMealScreen = (props) => {
   const renderMealItem = (itemData) => {
     return (
