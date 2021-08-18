@@ -1,9 +1,10 @@
+import Constants from 'expo-constants';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View, StyleSheet } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
@@ -82,13 +83,51 @@ const MealsFavTabNavigator =
         },
       });
 
-const FiltersNavigator = createStackNavigator({
-  Filters: FiltersScreen,
-});
+const FiltersNavigator = createStackNavigator(
+  {
+    Filters: FiltersScreen,
+  },
+  { defaultNavigationOptions: defaultStackNavOptions }
+);
 
-const MainNavigator = createDrawerNavigator({
-  MealsFavs: MealsFavTabNavigator,
-  Filters: FiltersNavigator,
+const MainNavigator = createDrawerNavigator(
+  {
+    MealsFavs: {
+      screen: MealsFavTabNavigator,
+
+      navigationOptions: {
+        drawerLabel: 'Meals',
+      }, // goes here
+    },
+    Filters: FiltersNavigator,
+  },
+  {
+    contentOptions: {
+      activeTintColor: Colors.accentColor,
+      labelStyle: {
+        fontFamily: 'open-sans-bold',
+      },
+    },
+    contentComponent: (props) => (
+      <View style={[{ flex: 1 }, styles.navigationPadding]}>
+        <DrawerItems {...props} />
+      </View>
+    ),
+  }
+);
+
+const styles = StyleSheet.create({
+  navigationPadding: {
+    ...Platform.select({
+      ios: {
+        // pass
+      },
+      android: {
+        paddingTop: Constants.statusBarHeight,
+        height: Constants.statusBarHeight + 56,
+      },
+    }),
+  },
 });
 
 export default createAppContainer(MainNavigator);
